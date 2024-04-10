@@ -5,7 +5,7 @@ A golang Elasticsearch Querystring parser
 
 ```go
 import (
-    querystring "github.com/bytedance/go-querystring-parser"
+    querystring "https://github.com/Group-IB/go-querystring-parser"
 )
 ```
 
