@@ -87,7 +87,7 @@ tMINUS {
 
 searchBase:
 tSTRING {
-	$$ = newStringCondition($1)
+	$$ = mustNewStringCondition($1)
 }
 |
 tNUMBER {
@@ -101,7 +101,7 @@ tPHRASE {
 }
 |
 tSTRING tCOLON tSTRING {
-	q := newStringCondition($3)
+	q := mustNewStringCondition($3)
 	q.SetField($1)
 	$$ = q
 }
