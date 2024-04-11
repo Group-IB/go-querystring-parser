@@ -3,6 +3,7 @@ package querystring
 import (
 	"github.com/gobwas/glob"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -146,17 +147,40 @@ func (q *WildcardCondition) SetField(field string) {
 // NumberRangeCondition .
 type NumberRangeCondition struct {
 	Field        string
-	Start        *string
-	End          *string
+	Start        *int64
+	End          *int64
 	IncludeStart bool
 	IncludeEnd   bool
 }
 
-// NewNumberRangeCondition .
-func NewNumberRangeCondition(start, end *string, includeStart, includeEnd bool) *NumberRangeCondition {
+// MustNewNumberRangeCondition panics and must be used only inside goyacc, due it recovers panics into goyacc errors
+func MustNewNumberRangeCondition(start *string, end *string, includeStart, includeEnd bool) *NumberRangeCondition {
+	var startInt *int64
+	var endInt *int64
+
+	if start != nil {
+		i, err := strconv.ParseInt(*start, 10, 64)
+
+		if err != nil {
+			panic(err)
+		}
+
+		startInt = &i
+	}
+
+	if end != nil {
+		i, err := strconv.ParseInt(*end, 10, 64)
+
+		if err != nil {
+			panic(err)
+		}
+
+		endInt = &i
+	}
+
 	return &NumberRangeCondition{
-		Start:        start,
-		End:          end,
+		Start:        startInt,
+		End:          endInt,
 		IncludeStart: includeStart,
 		IncludeEnd:   includeEnd,
 	}

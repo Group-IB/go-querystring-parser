@@ -108,7 +108,7 @@ tSTRING tCOLON tSTRING {
 |
 tSTRING tCOLON posOrNegNumber {
 	val := $3
-	q := NewNumberRangeCondition(&val, &val, true, true)
+	q := MustNewNumberRangeCondition(&val, &val, true, true)
 	q.SetField($1)
 	$$ = q
 }
@@ -121,28 +121,56 @@ tSTRING tCOLON tPHRASE {
 |
 tSTRING tCOLON tGREATER posOrNegNumber {
 	val := $4
-	q := NewNumberRangeCondition(&val, nil, false, false)
+	q := MustNewNumberRangeCondition(&val, nil, false, false)
 	q.SetField($1)
 	$$ = q
 }
 |
 tSTRING tCOLON tGREATER tEQUAL posOrNegNumber {
 	val := $5
-	q := NewNumberRangeCondition(&val, nil, true, false)
+	q := MustNewNumberRangeCondition(&val, nil, true, false)
 	q.SetField($1)
 	$$ = q
 }
 |
 tSTRING tCOLON tLESS posOrNegNumber {
 	val := $4
-	q := NewNumberRangeCondition(nil, &val, false, false)
+	q := MustNewNumberRangeCondition(nil, &val, false, false)
 	q.SetField($1)
 	$$ = q
 }
 |
 tSTRING tCOLON tLESS tEQUAL posOrNegNumber {
 	val := $5
-	q := NewNumberRangeCondition(nil, &val, false, true)
+	q := MustNewNumberRangeCondition(nil, &val, false, true)
+	q.SetField($1)
+	$$ = q
+}
+|
+tSTRING tGREATER posOrNegNumber {
+	val := $3
+	q := MustNewNumberRangeCondition(&val, nil, false, false)
+	q.SetField($1)
+	$$ = q
+}
+|
+tSTRING tGREATER tEQUAL posOrNegNumber {
+	val := $4
+	q := MustNewNumberRangeCondition(&val, nil, true, false)
+	q.SetField($1)
+	$$ = q
+}
+|
+tSTRING tLESS posOrNegNumber {
+	val := $3
+	q := MustNewNumberRangeCondition(nil, &val, false, false)
+	q.SetField($1)
+	$$ = q
+}
+|
+tSTRING tLESS tEQUAL posOrNegNumber {
+	val := $4
+	q := MustNewNumberRangeCondition(nil, &val, true, false)
 	q.SetField($1)
 	$$ = q
 }
@@ -178,7 +206,7 @@ tSTRING tCOLON tLESS tEQUAL tPHRASE {
 tSTRING tCOLON tLEFTRANGE posOrNegNumber tTO posOrNegNumber tRIGHTRANGE {
 	min := $4
 	max := $6
-	q := NewNumberRangeCondition(&min, &max, true, true)
+	q := MustNewNumberRangeCondition(&min, &max, true, true)
 	q.SetField($1)
 	$$ = q
 }

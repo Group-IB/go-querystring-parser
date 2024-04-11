@@ -20,8 +20,8 @@ func TestParser(t *testing.T) {
 		},
 		Right: &TimeRangeCondition{
 			Field:        "datetime",
-			Start:        pointer("2020-01-01T00:00:00"),
-			End:          pointer("2020-12-31T00:00:00"),
+			Start:        sptr("2020-01-01T00:00:00"),
+			End:          sptr("2020-12-31T00:00:00"),
 			IncludeStart: true,
 			IncludeEnd:   true,
 		},
@@ -40,23 +40,23 @@ func TestParserMixedCondition(t *testing.T) {
 	assert.Equal(t, &OrCondition{
 		Left: &NumberRangeCondition{
 			Field:        "a",
-			Start:        pointer("1"),
-			End:          pointer("1"),
+			Start:        iptr(int64(1)),
+			End:          iptr(int64(1)),
 			IncludeStart: true,
 			IncludeEnd:   true,
 		},
 		Right: &AndCondition{
 			Left: &NumberRangeCondition{
 				Field:        "b",
-				Start:        pointer("2"),
-				End:          pointer("2"),
+				Start:        iptr(int64(2)),
+				End:          iptr(int64(2)),
 				IncludeStart: true,
 				IncludeEnd:   true,
 			},
 			Right: &NumberRangeCondition{
 				Field:        "c",
-				Start:        pointer("4"),
-				End:          pointer("4"),
+				Start:        iptr(int64(4)),
+				End:          iptr(int64(4)),
 				IncludeStart: true,
 				IncludeEnd:   true,
 			},
@@ -64,6 +64,10 @@ func TestParserMixedCondition(t *testing.T) {
 	}, cond)
 }
 
-func pointer(s string) *string {
+func iptr(i int64) *int64 {
+	return &i
+}
+
+func sptr(s string) *string {
 	return &s
 }
