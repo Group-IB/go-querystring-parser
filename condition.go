@@ -233,7 +233,7 @@ func mustNewStringCondition(str string) FieldableCondition {
 	str = strings.Trim(str, `"`) // remove any quotes
 
 	if strings.HasPrefix(str, "/") && strings.HasSuffix(str, "/") {
-		return MustNewRegexpCondition(strings.Trim(str, `"`))
+		return MustNewRegexpCondition(strings.Trim(str, `/`))
 	}
 
 	if strings.ContainsAny(str, "*?") {
