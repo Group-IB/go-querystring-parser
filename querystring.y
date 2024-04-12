@@ -94,12 +94,6 @@ tNUMBER {
 	$$ = NewMatchCondition($1)
 }
 |
-tPHRASE {
-	phrase := $1
-	q := NewMatchCondition(phrase)
-	$$ = q
-}
-|
 tSTRING tCOLON tSTRING {
 	q := mustNewStringCondition($3)
 	q.SetField($1)
@@ -114,7 +108,7 @@ tSTRING tCOLON posOrNegNumber {
 }
 |
 tSTRING tCOLON tPHRASE {
-	q := NewMatchCondition($3)
+	q := mustNewStringCondition($3)
 	q.SetField($1)
 	$$ = q
 }

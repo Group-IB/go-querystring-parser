@@ -230,8 +230,10 @@ func queryTimeFromString(t string) (time.Time, error) {
 }
 
 func mustNewStringCondition(str string) FieldableCondition {
+	str = strings.Trim(str, `"`) // remove any quotes
+
 	if strings.HasPrefix(str, "/") && strings.HasSuffix(str, "/") {
-		return MustNewRegexpCondition(str[1 : len(str)-1])
+		return MustNewRegexpCondition(strings.Trim(str, `"`))
 	}
 
 	if strings.ContainsAny(str, "*?") {
