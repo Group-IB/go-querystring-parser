@@ -1,6 +1,7 @@
 package querystring
 
 import (
+	"regexp"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -28,6 +29,19 @@ func TestParser(t *testing.T) {
 	})
 
 	assert.Equal(t, expected, cond)
+}
+
+func TestParserPhase(t *testing.T) {
+	cond, err := Parse(`a: "/.*/"`)
+	if err != nil {
+		t.Errorf("parse return error, %s", err)
+		return
+	}
+
+	assert.Equal(t, &RegexpCondition{
+		Field: "a",
+		Value: regexp.MustCompile(".*"),
+	}, cond)
 }
 
 func TestParserMixedCondition(t *testing.T) {

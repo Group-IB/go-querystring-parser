@@ -74,60 +74,60 @@ const yyPrivate = 57344
 const yyLast = 83
 
 var yyAct = [...]int8{
-	28, 27, 29, 33, 44, 33, 33, 41, 33, 34,
-	59, 34, 34, 32, 34, 30, 31, 55, 58, 43,
-	38, 33, 40, 35, 37, 26, 54, 34, 33, 53,
-	33, 39, 42, 45, 34, 36, 34, 48, 5, 49,
-	21, 50, 17, 18, 52, 22, 23, 51, 33, 19,
-	8, 12, 14, 13, 34, 56, 24, 25, 12, 14,
-	13, 47, 20, 11, 57, 6, 7, 9, 10, 12,
-	14, 13, 16, 2, 11, 46, 33, 15, 1, 10,
-	4, 3, 34,
+	27, 26, 28, 32, 43, 32, 58, 57, 25, 33,
+	54, 33, 32, 31, 53, 29, 30, 8, 33, 42,
+	40, 32, 34, 36, 16, 17, 37, 33, 32, 19,
+	38, 41, 44, 46, 33, 39, 47, 56, 48, 20,
+	49, 5, 35, 51, 21, 22, 12, 32, 13, 1,
+	4, 11, 18, 33, 55, 12, 10, 13, 23, 24,
+	11, 3, 6, 7, 0, 10, 52, 32, 50, 32,
+	45, 32, 12, 33, 13, 33, 9, 33, 2, 0,
+	0, 15, 14,
 }
 
 var yyPact = [...]int16{
-	54, -1000, -1000, 54, 47, -1000, -1000, -1000, 35, -1000,
-	65, 65, 27, -1000, -1000, -1000, -1000, 65, 65, 10,
-	-1000, -3, 15, 0, -1000, -1000, -1000, -1000, -1000, -1000,
-	2, -1, 70, -1000, 55, -1000, 22, -1000, 22, -1000,
-	42, -1000, -1000, 24, -1000, 16, 7, -1000, -1000, -1000,
-	-1000, -1000, -1000, -1000, 22, 59, 1, -7, -1000, -1000,
+	51, -1000, -1000, 51, 68, -1000, -1000, -1000, 17, -1000,
+	42, 42, 26, -1000, -1000, -1000, 42, 42, -7, -1000,
+	-3, 22, 6, -1000, -1000, -1000, -1000, -1000, -1000, 15,
+	-1, 65, -1000, 27, -1000, 41, -1000, 41, -1000, 63,
+	-1000, -1000, 61, -1000, 4, 0, -1000, -1000, -1000, -1000,
+	-1000, -1000, -1000, 41, 32, -10, -11, -1000, -1000,
 }
 
 var yyPgo = [...]int8{
-	0, 0, 67, 73, 81, 38, 50, 80, 78,
+	0, 0, 76, 78, 61, 41, 17, 50, 49,
 }
 
 var yyR1 = [...]int8{
 	0, 8, 3, 3, 4, 4, 5, 5, 5, 6,
 	6, 6, 7, 7, 2, 2, 2, 2, 2, 2,
 	2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-	2, 2, 2, 2, 1, 1,
+	2, 2, 2, 1, 1,
 }
 
 var yyR2 = [...]int8{
 	0, 1, 2, 1, 2, 1, 1, 3, 3, 1,
-	3, 2, 1, 1, 1, 1, 1, 3, 3, 3,
-	4, 5, 4, 5, 3, 4, 3, 4, 4, 5,
-	4, 5, 7, 7, 1, 2,
+	3, 2, 1, 1, 1, 1, 3, 3, 3, 4,
+	5, 4, 5, 3, 4, 3, 4, 4, 5, 4,
+	5, 7, 7, 1, 2,
 }
 
 var yyChk = [...]int16{
 	-1000, -8, -3, -4, -7, -5, 11, 12, -6, -2,
-	14, 9, 4, 6, 5, -3, -2, 7, 8, -5,
-	-6, 13, 18, 19, -5, -5, 15, 4, -1, 5,
-	18, 19, 16, 6, 12, -1, 20, -1, 20, -1,
-	20, 5, -1, 20, 5, -1, 5, 6, -1, -1,
-	-1, 5, -1, 5, 10, 10, -1, 5, 17, 17,
+	14, 9, 4, 6, -3, -2, 7, 8, -5, -6,
+	13, 18, 19, -5, -5, 15, 4, -1, 5, 18,
+	19, 16, 6, 12, -1, 20, -1, 20, -1, 20,
+	5, -1, 20, 5, -1, 5, 6, -1, -1, -1,
+	5, -1, 5, 10, 10, -1, 5, 17, 17,
 }
 
 var yyDef = [...]int8{
 	0, -2, 1, 3, 0, 5, 12, 13, 6, 9,
-	0, 0, 14, 15, 16, 2, 4, 0, 0, 0,
-	11, 0, 0, 0, 7, 8, 10, 17, 18, 19,
-	0, 0, 0, 34, 0, 24, 0, 26, 0, 20,
-	0, 28, 22, 0, 30, 0, 0, 35, 25, 27,
-	21, 29, 23, 31, 0, 0, 0, 0, 32, 33,
+	0, 0, 14, 15, 2, 4, 0, 0, 0, 11,
+	0, 0, 0, 7, 8, 10, 16, 17, 18, 0,
+	0, 0, 33, 0, 23, 0, 25, 0, 19, 0,
+	27, 21, 0, 29, 0, 0, 34, 24, 26, 20,
+	28, 22, 30, 0, 0, 0, 0, 31, 32,
 }
 
 var yyTok1 = [...]int8{
@@ -576,149 +576,141 @@ yydefault:
 			yyVAL.q = NewMatchCondition(yyDollar[1].s)
 		}
 	case 16:
-		yyDollar = yyS[yypt-1 : yypt+1]
+		yyDollar = yyS[yypt-3 : yypt+1]
 //line querystring.y:97
 		{
-			phrase := yyDollar[1].s
-			q := NewMatchCondition(phrase)
+			q := mustNewStringCondition(yyDollar[3].s)
+			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
 	case 17:
 		yyDollar = yyS[yypt-3 : yypt+1]
 //line querystring.y:103
 		{
-			q := mustNewStringCondition(yyDollar[3].s)
-			q.SetField(yyDollar[1].s)
-			yyVAL.q = q
-		}
-	case 18:
-		yyDollar = yyS[yypt-3 : yypt+1]
-//line querystring.y:109
-		{
 			val := yyDollar[3].s
 			q := MustNewNumberRangeCondition(&val, &val, true, true)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 19:
+	case 18:
 		yyDollar = yyS[yypt-3 : yypt+1]
-//line querystring.y:116
+//line querystring.y:110
 		{
-			q := NewMatchCondition(yyDollar[3].s)
+			q := mustNewStringCondition(yyDollar[3].s)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 20:
+	case 19:
 		yyDollar = yyS[yypt-4 : yypt+1]
-//line querystring.y:122
+//line querystring.y:116
 		{
 			val := yyDollar[4].s
 			q := MustNewNumberRangeCondition(&val, nil, false, false)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 21:
+	case 20:
 		yyDollar = yyS[yypt-5 : yypt+1]
-//line querystring.y:129
+//line querystring.y:123
 		{
 			val := yyDollar[5].s
 			q := MustNewNumberRangeCondition(&val, nil, true, false)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 22:
+	case 21:
 		yyDollar = yyS[yypt-4 : yypt+1]
-//line querystring.y:136
+//line querystring.y:130
 		{
 			val := yyDollar[4].s
 			q := MustNewNumberRangeCondition(nil, &val, false, false)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 23:
+	case 22:
 		yyDollar = yyS[yypt-5 : yypt+1]
-//line querystring.y:143
+//line querystring.y:137
 		{
 			val := yyDollar[5].s
 			q := MustNewNumberRangeCondition(nil, &val, false, true)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 24:
+	case 23:
 		yyDollar = yyS[yypt-3 : yypt+1]
-//line querystring.y:150
+//line querystring.y:144
 		{
 			val := yyDollar[3].s
 			q := MustNewNumberRangeCondition(&val, nil, false, false)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 25:
+	case 24:
 		yyDollar = yyS[yypt-4 : yypt+1]
-//line querystring.y:157
+//line querystring.y:151
 		{
 			val := yyDollar[4].s
 			q := MustNewNumberRangeCondition(&val, nil, true, false)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 26:
+	case 25:
 		yyDollar = yyS[yypt-3 : yypt+1]
-//line querystring.y:164
+//line querystring.y:158
 		{
 			val := yyDollar[3].s
 			q := MustNewNumberRangeCondition(nil, &val, false, false)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 27:
+	case 26:
 		yyDollar = yyS[yypt-4 : yypt+1]
-//line querystring.y:171
+//line querystring.y:165
 		{
 			val := yyDollar[4].s
 			q := MustNewNumberRangeCondition(nil, &val, true, false)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 28:
+	case 27:
 		yyDollar = yyS[yypt-4 : yypt+1]
-//line querystring.y:178
+//line querystring.y:172
 		{
 			phrase := yyDollar[4].s
 			q := NewTimeRangeCondition(&phrase, nil, false, false)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 29:
+	case 28:
 		yyDollar = yyS[yypt-5 : yypt+1]
-//line querystring.y:185
+//line querystring.y:179
 		{
 			phrase := yyDollar[5].s
 			q := NewTimeRangeCondition(&phrase, nil, true, false)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 30:
+	case 29:
 		yyDollar = yyS[yypt-4 : yypt+1]
-//line querystring.y:192
+//line querystring.y:186
 		{
 			phrase := yyDollar[4].s
 			q := NewTimeRangeCondition(nil, &phrase, false, false)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 31:
+	case 30:
 		yyDollar = yyS[yypt-5 : yypt+1]
-//line querystring.y:199
+//line querystring.y:193
 		{
 			phrase := yyDollar[5].s
 			q := NewTimeRangeCondition(nil, &phrase, false, true)
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 32:
+	case 31:
 		yyDollar = yyS[yypt-7 : yypt+1]
-//line querystring.y:206
+//line querystring.y:200
 		{
 			min := yyDollar[4].s
 			max := yyDollar[6].s
@@ -726,9 +718,9 @@ yydefault:
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 33:
+	case 32:
 		yyDollar = yyS[yypt-7 : yypt+1]
-//line querystring.y:214
+//line querystring.y:208
 		{
 			min := yyDollar[4].s
 			max := yyDollar[6].s
@@ -736,15 +728,15 @@ yydefault:
 			q.SetField(yyDollar[1].s)
 			yyVAL.q = q
 		}
-	case 34:
+	case 33:
 		yyDollar = yyS[yypt-1 : yypt+1]
-//line querystring.y:223
+//line querystring.y:217
 		{
 			yyVAL.s = yyDollar[1].s
 		}
-	case 35:
+	case 34:
 		yyDollar = yyS[yypt-2 : yypt+1]
-//line querystring.y:227
+//line querystring.y:221
 		{
 			yyVAL.s = "-" + yyDollar[2].s
 		}
