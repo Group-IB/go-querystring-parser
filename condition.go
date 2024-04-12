@@ -229,14 +229,22 @@ func queryTimeFromString(t string) (time.Time, error) {
 	return time.Parse(time.RFC3339, t)
 }
 
-func mustNewStringCondition(str string) FieldableCondition {
-	str = strings.Trim(str, `"`) // remove any quotes
+var isWildcardRegex = regexp.MustCompile(`\[[-!\w]+]|\*|\?`)
 
-	if strings.HasPrefix(str, "/") && strings.HasSuffix(str, "/") {
-		return MustNewRegexpCondition(strings.Trim(str, `/`))
+func mustNewStringCondition(str string) FieldableCondition {
+	// remove any quotes
+	if strings.HasPrefix(str, `"`) && strings.HasSuffix(str, `"`) {
+		str = strings.TrimPrefix(str, `"`)
+		str = strings.TrimSuffix(str, `"`)
 	}
 
-	if strings.ContainsAny(str, "*?") {
+	if strings.HasPrefix(str, "/") && strings.HasSuffix(str, "/") {
+		str = strings.TrimPrefix(str, `/`)
+		str = strings.TrimSuffix(str, `/`)
+		return MustNewRegexpCondition(str)
+	}
+
+	if isWildcardRegex.MatchString(str) {
 		return MustNewWildcardCondition(str)
 	}
 

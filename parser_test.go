@@ -1,6 +1,7 @@
 package querystring
 
 import (
+	"github.com/gobwas/glob"
 	"regexp"
 	"testing"
 
@@ -31,7 +32,42 @@ func TestParser(t *testing.T) {
 	assert.Equal(t, expected, cond)
 }
 
-func TestParserPhase(t *testing.T) {
+func TestParserWildcardPhase(t *testing.T) {
+	cond1, err := Parse(`a: "\\/*/abc/"`)
+	if err != nil {
+		t.Errorf("parse return error, %s", err)
+		return
+	}
+
+	assert.Equal(t, &WildcardCondition{
+		Field: "a",
+		Value: glob.MustCompile("/*/abc/"),
+	}, cond1)
+
+	cond2, err := Parse(`b: "\\/abc/?/"`)
+	if err != nil {
+		t.Errorf("parse return error, %s", err)
+		return
+	}
+
+	assert.Equal(t, &WildcardCondition{
+		Field: "b",
+		Value: glob.MustCompile("/abc/?/"),
+	}, cond2)
+
+	cond3, err := Parse(`c: "\\/abc/[!a-z]/[!1-5]"`)
+	if err != nil {
+		t.Errorf("parse return error, %s", err)
+		return
+	}
+
+	assert.Equal(t, &WildcardCondition{
+		Field: "c",
+		Value: glob.MustCompile("/abc/[!a-z]/[!1-5]"),
+	}, cond3)
+}
+
+func TestParserRegexPhase(t *testing.T) {
 	cond, err := Parse(`a: "/.*/"`)
 	if err != nil {
 		t.Errorf("parse return error, %s", err)
