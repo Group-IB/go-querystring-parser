@@ -65,6 +65,19 @@ func TestParserWildcardPhase(t *testing.T) {
 		Field: "c",
 		Value: glob.MustCompile("/abc/[!a-z]/[!1-5]"),
 	}, cond3)
+
+	cond4, err := Parse(`a: "*/AbC/CrAzY/CaSE/*"`, WithOptions(&Options{
+		LowerCaseWildcard: true,
+	}))
+	if err != nil {
+		t.Errorf("parse return error, %s", err)
+		return
+	}
+
+	assert.Equal(t, &WildcardCondition{
+		Field: "a",
+		Value: glob.MustCompile("*/abc/crazy/case/*"),
+	}, cond4)
 }
 
 func TestParserRegexPhase(t *testing.T) {

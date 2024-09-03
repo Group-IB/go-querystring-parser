@@ -116,7 +116,13 @@ type WildcardCondition struct {
 }
 
 // MustNewWildcardCondition panics and must be used only inside goyacc, due it recovers panics into goyacc errors
-func MustNewWildcardCondition(s string) *WildcardCondition {
+func MustNewWildcardCondition(s string, options *Options) *WildcardCondition {
+	if options != nil {
+		if options.LowerCaseWildcard {
+			s = strings.ToLower(s)
+		}
+	}
+
 	return &WildcardCondition{
 		Value: glob.MustCompile(s),
 	}
@@ -231,7 +237,7 @@ func queryTimeFromString(t string) (time.Time, error) {
 
 var isWildcardRegex = regexp.MustCompile(`\[[-!\w]+]|\*|\?`)
 
-func mustNewStringCondition(str string) FieldableCondition {
+func mustNewStringCondition(str string, options *Options) FieldableCondition {
 	// remove any quotes
 	if strings.HasPrefix(str, `"`) && strings.HasSuffix(str, `"`) {
 		str = strings.TrimPrefix(str, `"`)
@@ -245,7 +251,7 @@ func mustNewStringCondition(str string) FieldableCondition {
 	}
 
 	if isWildcardRegex.MatchString(str) {
-		return MustNewWildcardCondition(str)
+		return MustNewWildcardCondition(str, options)
 	}
 
 	return NewMatchCondition(str)

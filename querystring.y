@@ -87,7 +87,11 @@ tMINUS {
 
 searchBase:
 tSTRING {
-	$$ = mustNewStringCondition($1)
+    var opts *Options = nil
+    if cyylex, ok := yylex.(CustomizableLexer); ok {
+        opts = cyylex.GetOptions()
+    }
+	$$ = mustNewStringCondition($1, opts)
 }
 |
 tNUMBER {
@@ -95,7 +99,11 @@ tNUMBER {
 }
 |
 tSTRING tCOLON tSTRING {
-	q := mustNewStringCondition($3)
+    var opts *Options = nil
+    if cyylex, ok := yylex.(CustomizableLexer); ok {
+        opts = cyylex.GetOptions()
+    }
+	q := mustNewStringCondition($3, opts)
 	q.SetField($1)
 	$$ = q
 }
@@ -108,7 +116,11 @@ tSTRING tCOLON posOrNegNumber {
 }
 |
 tSTRING tCOLON tPHRASE {
-	q := mustNewStringCondition($3)
+    var opts *Options = nil
+    if cyylex, ok := yylex.(CustomizableLexer); ok {
+        opts = cyylex.GetOptions()
+    }
+	q := mustNewStringCondition($3, opts)
 	q.SetField($1)
 	$$ = q
 }

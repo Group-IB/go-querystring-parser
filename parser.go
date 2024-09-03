@@ -9,13 +9,26 @@ import (
 
 var debugLexer bool
 
+type ParseOptions func(wrapper *lexerWrapper)
+
+func WithOptions(options *Options) ParseOptions {
+	return func(wrapper *lexerWrapper) {
+		wrapper.Options = options
+	}
+}
+
 // Parse querystring and return Condition
-func Parse(query string) (rq Condition, err error) {
+func Parse(query string, opts ...ParseOptions) (rq Condition, err error) {
 	if query == "" {
 		return nil, nil
 	}
 
 	lex := newLexerWrapper(newConditionStringLex(strings.NewReader(query)))
+
+	for _, opt := range opts {
+		opt(lex)
+	}
+
 	doParse(lex)
 
 	if len(lex.errs) > 0 {
@@ -41,16 +54,32 @@ const (
 	queryMustNot
 )
 
+type Options struct {
+	LowerCaseWildcard bool
+}
+
+type CustomizableLexer interface {
+	GetOptions() *Options
+}
+
 type lexerWrapper struct {
-	lex   yyLexer
-	errs  []string
-	query Condition
+	lex     yyLexer
+	errs    []string
+	query   Condition
+	Options *Options
+}
+
+func (l *lexerWrapper) GetOptions() *Options {
+	return l.Options
 }
 
 func newLexerWrapper(lex yyLexer) *lexerWrapper {
 	return &lexerWrapper{
 		lex:   lex,
 		query: nil,
+		Options: &Options{
+			LowerCaseWildcard: false,
+		},
 	}
 }
 
